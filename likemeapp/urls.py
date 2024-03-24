@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from home import views as homeview
 from users import views as usersview
+from feed import views as feedview
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +26,6 @@ urlpatterns = [
     # path('redirect/', usersview.createuser, name="create-user"),
     path('create-user/', usersview.createuser, name="create-user"),
     path('login-user/', usersview.loginuser, name="login-user"),
+    path('feed/', feedview.feed, name="feed"),
     
 ]

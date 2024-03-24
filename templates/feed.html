@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <script src="{% static 'geoLocation.js' %}"></script>
+    <title>feed</title>
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    <button id="find-me" onclick="geoFindMe()">Get my location</button><br />
+    <p id="status"></p>
+    <a id="map-link" target="_blank"></a>
+
+    <form method="POST" action="#">
+
+        {% csrf_token %}
+        <input type="hidden" name="latitude" value=${latitude}>
+        <input type="hidden" name="longitude" value=${longitude}>
+        <input type="submit" value="Update loaction">
+    </form>
+
+    {% for message in messages %}
+
+    <h5>{{message}}</h5>
+
+    {% endfor %}
+    {% else %}
+    You are not logged in.
+    <a href="/">Click here to log in.</a>
+    {% endif %}
+
+</body>
+
+</html>

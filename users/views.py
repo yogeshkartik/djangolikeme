@@ -1,40 +1,10 @@
 from django.shortcuts import render, redirect
-import csv
-# Create your views here.
-# def createuser(request):
-    # return render(request, 'createuser.html')
-    # if request.method == 'POST':
-    #     dict1 = request.POST
-    #     with open('createuseraccount.csv', 'a') as csvfile:
-    #         wrt = csv.writer(csvfile)
-    #         for key,value in dict1.items():
-    #             wrt.writerow([key, value])
-
-    # return render(request, 'createuser.html')
-    
-
-
-# def createuseraccount(request):
-#     if request.method == 'POST':
-#         dict1 = request.POST
-#         with open('createuseraccount.csv', 'a') as csvfile:
-#             wrt = csv.writer(csvfile)
-#             for key,value in dict1.items():
-#                 wrt.writerow([key, value])
-
-#     return render(request, 'createuser.html')
-
-
 from django.http import HttpResponse, HttpResponseRedirect
 
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 
-
-# def redirect_view(request):
-#     response = redirect('redirect-success')
-#     return response
 
 def createuser(request):
 
@@ -94,7 +64,7 @@ def loginuser(request):
         user = authenticate(username=username1, password=password1)
         if user:  # If the returned object is not None
                 login(request, user)  # we connect the user
-                return redirect('/')
+                return redirect('/feed/')
         else:
                messages.info(request,'Usernnnname or password entered are incorrect. Please enter again')
                return redirect('/login-user/')
